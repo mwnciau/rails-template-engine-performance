@@ -1,0 +1,14 @@
+doctype html
+html lang="en"
+  head
+    title Partials Benchmark
+    meta charset="utf-8"
+    meta name="description" content="This is an example of a meta description."
+  body
+    h1 == header
+    - unless colours.empty?
+      ul
+        - for colour in colours
+          = render partial: 'slim_partial', locals: { colour: colour }
+    - else
+      p The list is empty.

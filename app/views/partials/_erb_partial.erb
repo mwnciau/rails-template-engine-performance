@@ -1,0 +1,5 @@
+<% if colour[:current] %>
+  <li><strong><%= colour[:name] %></strong></li>
+<% else %>
+  <li><a href="<%= colour[:url] %>"><%= colour[:name] %></a></li>
+<% end %>

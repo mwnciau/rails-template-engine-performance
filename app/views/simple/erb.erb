@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+  <head>
+    <title>Simple Benchmark</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is an example of a meta description.">
+  </head>
+  <body>
+    <h1><%= header %></h1>
+    <% unless colours.empty? %>
+      <ul>
+      <% for colour in colours %>
+        <% if colour[:current] %>
+          <li><strong><%= colour[:name] %></strong></li>
+        <% else %>
+          <li><a href="<%= colour[:url] %>"><%= colour[:name] %></a></li>
+        <% end %>
+      <% end %>
+      </ul>
+    <% else %>
+      <p>The list is empty.</p>
+    <% end %>
+  </body>
+</html>

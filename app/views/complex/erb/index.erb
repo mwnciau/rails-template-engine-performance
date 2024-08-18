@@ -1,0 +1,23 @@
+<% colours.each_with_index do |colour, i| %>
+  <% if colour[:current] %>
+    <h2><%= colour[:name].capitalize %></h2>
+    <%= render partial: "complex/erb/colour_panel", locals: {colour:} %>
+    <div id="related-panels">
+      <%= render partial: "complex/erb/related_panel", locals: {colour: colours[(i+1) % colours.count]} %>
+      <%= render partial: "complex/erb/related_panel", locals: {colour: colours[(i+2) % colours.count]} %>
+      <%= render partial: "complex/erb/related_panel", locals: {colour: colours[(i+3) % colours.count]} %>
+    </div>
+    <% content_for :sidebar_links, flush: true do %>
+      <strong><%= colour[:name] %></strong>
+      <%= yield :sidebar_links %>
+    <% end %>
+  <% else %>
+    <% content_for :sidebar_links do %>
+      <%= render partial: "complex/erb/sidebar_link", locals: {colour:} %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for :footer do %>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias doloremque facere ipsa iure modi nam officiis quidem saepe!
+<% end %>

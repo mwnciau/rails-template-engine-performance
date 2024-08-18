@@ -1,0 +1,92 @@
+!!! html
+
+%html{ lang: "en" }
+  %head
+    %title Complex Benchmark
+    %meta{ charset: "utf-8" }
+    %meta{ name: "description", content: "This is an example of a meta description." }
+    %script{ src: "/app.js" }
+    // HAML was not designed for this...
+    %style
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      }
+      body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      }
+      header {
+      background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+      padding: 1rem 0;
+      }
+      h1 {
+      width: 800px;
+      margin: 0 auto;
+
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 900;
+      }
+      footer {
+      background: linear-gradient(90deg, rgba(131, 58, 180, 0.2) 0%, rgba(253,29,29,0.2) 50%, rgba(252,176,69,0.2) 100%);
+      padding: 1rem 0;
+      margin-top: auto;
+      }
+      footer p {
+      width: 800px;
+      margin: 0 auto;
+      }
+      main {
+      display: flex;
+      gap: 2rem;
+      width: 800px;
+      padding: 2rem 0;
+      margin: 0 auto;
+      }
+      article {
+      width: 100%;
+      }
+      \#colour-panel
+      {
+      width: 100%;
+      height: 200px;
+      padding: 0.25rem;
+      margin-top: 1rem;
+      background-clip: content-box !important;
+      border: 1px solid #ccc;
+      }
+      \#related-panels {
+      display: flex;
+      gap: 0.5rem;
+      }
+      \#related-panels a
+      {
+      width: 100%;
+      height: 60px;
+      padding: 2px;
+      margin-top: 0.5rem;
+      background-clip: content-box !important;
+      border: 1px solid #ccc;
+      }
+      \#sidebar {
+      width: 300px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      }
+      ul {
+      list-style-type: none;
+      }
+  %body
+    %header
+      %h1 Colours
+    %main
+      %article
+        = yield
+      %div#sidebar
+        %ul
+          = yield :sidebar_links
+    %footer
+      %p= yield :footer

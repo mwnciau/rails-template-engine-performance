@@ -1,0 +1,17 @@
+- colours.each_with_index do |colour, i|
+  - if colour[:current]
+    h2= colour[:name].capitalize
+    = render partial: "complex/slim/colour_panel", locals: {colour:}
+    div#related-panels
+      = render partial: "complex/slim/related_panel", locals: {colour: colours[(i+1) % colours.count]}
+      = render partial: "complex/slim/related_panel", locals: {colour: colours[(i+2) % colours.count]}
+      = render partial: "complex/slim/related_panel", locals: {colour: colours[(i+3) % colours.count]}
+    - content_for :sidebar_links, flush: true do
+      strong= colour[:name]
+      = yield :sidebar_links
+  - else
+    - content_for :sidebar_links do
+      = render partial: "complex/slim/sidebar_link", locals: {colour:}
+
+- content_for :footer do
+  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias doloremque facere ipsa iure modi nam officiis quidem saepe!

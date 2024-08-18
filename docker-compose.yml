@@ -1,0 +1,9 @@
+services:
+  rails:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/var/source"
+      - "./storage/bundle:/usr/local/bundle"
